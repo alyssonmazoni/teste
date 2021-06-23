@@ -1,16 +1,41 @@
 # teste
 
-A new Flutter project.
+Aplicativo para recomendação de hoteis e pousadas que tenham opção de animais de estimação.
 
-## Getting Started
+## Introdução
 
-This project is a starting point for a Flutter application.
+Projeto de aula.
 
-A few resources to get you started if this is your first Flutter project:
+Projeto inicial para teste. Uma versão posterior será privada e com todos os recursos.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Possíveis recursos.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- carousel_slider
+https://pub.dev/packages/carousel_slider
+import 'package:carousel_slider/carousel_slider.dart';
+
+- ListView - material
+
+- image_picker
+https://pub.dev/packages/image_picker
+
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+- google_maps_flutter
+https://pub.dev/packages/google_maps_flutter
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+
+- textfield_search
+https://pub.dev/packages/textfield_search
+
+import 'package:flutter_textfield_search/search.dart';
+
+
+
+
