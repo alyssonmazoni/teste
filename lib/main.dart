@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:teste/tests/test_screen.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,6 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
     'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
   ];
 
+  final _picker = ImagePicker();
+  String aviso = '';
+  Image img = Image.network('https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80');
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +55,27 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [Container(
-            height: 500,
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('Item ${index + 1}'),
-                  onTap: () { Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => TestScreen()),
-                  );},
-                );
-              }),
+            child: ElevatedButton(
+              child: Text('Imagem'),
+              onPressed: () async {
+                final PickedFile? pickedFile = await _picker.getImage(source: ImageSource.camera);
+                if (pickedFile == null) {
+                  setState(() {
+                    aviso = 'Imagem não adicionada.';
+                  });
+                } else {
+                  final PickedFile p = pickedFile!;
+
+                  setState(() {
+                    img = Image.file(File(p.path));
+                    aviso = 'Imagem adicionada.';
+                  });
+                }
+              },
+            )
           ),
+            Text(aviso),
+            img,
         ]
         ),
       ),
